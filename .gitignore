@@ -25,6 +25,12 @@ bin/
 Bin/
 obj/
 Obj/
+.sln
+Global.asax
+Global.asax.cs
+HRISapp.csproj
+HRISapp.csproj.user
+Models/
 
 # Visual Studio 2015 cache/options directory
 .vs/
