@@ -1,10 +1,9 @@
-﻿function alertbargo() {
-    var x = document.getElementById("snackbar");
-    x.className = "show";
-    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-}
+﻿//function alertbargo() {
+//    var x = document.getElementById("snackbar");
+//    x.className = "show";
+//    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+//}
 
-//var mMenuModule = angular.module('ABCMenu', ["smart-table", "ui.bootstrap", "ui.select2"]);
 var OrgUtility = angular.module('OrgUtility', ["smart-table", "ui.select2"]);
 OrgUtility.controller('OrgUtilityController', ['$scope', '$filter', '$http', function (_s, _f, _h) {
 
@@ -31,7 +30,6 @@ OrgUtility.controller('OrgUtilityController', ['$scope', '$filter', '$http', fun
     }
 
     _s.addNewDepartment = function (data) {
-
         if (!_s.addNew || data == 0) {
             _s.addNew = !_s.addNew;
             return false;
@@ -49,20 +47,8 @@ OrgUtility.controller('OrgUtilityController', ['$scope', '$filter', '$http', fun
             _s.addNew = !_s.addNew;
         });
     }
-
-    //_s.changeSort = function (data, tag) {
-
-    //    _h.post("../OrgUtility/addNewDepartment", {
-    //        data: data,
-    //        tag: tag
-    //    }).then(function (c) {
-    //        _s.Directory.departments = c.data;
-    //    });
-
-    //}
-
+    
     _s.activeChange = function (data, tag) {
-
         if (tag == 3) {
             swal({
                 title: "Are you sure you want to remove?",
@@ -88,12 +74,10 @@ OrgUtility.controller('OrgUtilityController', ['$scope', '$filter', '$http', fun
             }).then(function (c) {
                 _s.Directory.departments = c.data;
             });
-        }
-        
+        }        
     }
 
     _s.editOffice = function (data) {
-
         data.goEdit = !data.goEdit;
         if (data.goEdit) {
             _s.toedit = angular.copy(data);
@@ -102,7 +86,6 @@ OrgUtility.controller('OrgUtilityController', ['$scope', '$filter', '$http', fun
     }
 
     _s.selectFromList = function (data) {
-
         _s.selectedD = data;
         var selected = _s.Directory[data + "s"];
         _s.selectedDirectory = [];
@@ -158,7 +141,6 @@ OrgUtility.controller('OrgUtilityController', ['$scope', '$filter', '$http', fun
                 data: data,
                 tag: tag
             }).then(function (c) {
-                //console.log(data);
                 if (tag == 1) {
                     var edit = _f("filter")(_s.selectedDirectory, { code: data.code })[0];
                     edit.goEdit = !data.goEdit;
@@ -175,15 +157,6 @@ OrgUtility.controller('OrgUtilityController', ['$scope', '$filter', '$http', fun
                 
             });
         }
-
     }
-
-    //_s.editItem = function (data) {
-    //    data.goEdit = !data.goEdit;
-    //    if (data.goEdit) {
-    //        _s.toedit = data;
-    //    }
-    //    return true;
-    //}
 
 }]);

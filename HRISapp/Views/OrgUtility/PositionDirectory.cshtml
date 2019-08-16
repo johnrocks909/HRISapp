@@ -42,10 +42,7 @@
                 <div class="tabbable">
                     <ul class="text-bold nav nav-lg nav-tabs nav-tabs-solid nav-tabs-component nav-justified">
                         <li class="active"><a href="#Positions" data-toggle="tab"><i class="icon-city position-left"></i> <span> Positions</span></a></li>
-                        <li><a href="#MagnaCartas" data-toggle="tab"><i class="icon-office position-left"></i> Magnacartas</a></li>
-                        @*<li><a href="#Clusters" ng-click="selectFromList('division')" data-toggle="tab"><i class="icon-library2 position-left"></i> Divisions</a></li>
-                        <li><a href="#Clusters" ng-click="selectFromList('section')" data-toggle="tab"><i class="icon-home2 position-left"></i> Sections</a></li>
-                        <li><a href="#Clusters" ng-click="selectFromList('unit')" data-toggle="tab"><i class="icon-menu7 position-left"></i> Units</a></li>*@
+                        <li><a href="#MagnaCartas" data-toggle="tab"><i class="icon-office position-left"></i> Magnacartas</a></li>                        
                     </ul>
                     <div class="tab-content">
 
@@ -94,8 +91,7 @@
                                                         <div class="col-lg-1">
                                                             <div class="col-lg-12" style="padding-top: 5px;">
                                                                 Level<select ui-select2 style="width: 100%" ng-model="addoff.positionLevel" class="form-control" ng-options="a as a for a in [1,2,3]" />
-                                                            </div>
-                                                            @*<div class="col-lg-12" style="text-align: center; font-size: .8em; background-color: blue"></div>*@
+                                                            </div>                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -152,8 +148,7 @@
                                                 {{row.positionLevel}}<sup>{{(row.positionLevel == 1 ? 'st' : (row.positionLevel == 2 ? 'nd' : 'rd'))}}</sup>
                                             </div>
                                             <div ng-show="row.goEdit">
-                                                <select style="width: 100%" ng-model="toedit.positionLevel" class="form-control" ng-options="a as a for a in [1,2,3]" />
-                                                @*<input ng-model="toedit.positionLevel" placeholder="Level" class="input-sm form-control" type="number" />*@
+                                                <select style="width: 100%" ng-model="toedit.positionLevel" class="form-control" ng-options="a as a for a in [1,2,3]" />                                                
                                             </div>
                                         </td>
                                         <td class="">
@@ -256,4 +251,3 @@
     </div>
 </div>
 <script src="~/Scripts/Utility/PositionUtility.js"></script>
-@*<script src="~/Scripts/materialize.min.js"></script>*@
