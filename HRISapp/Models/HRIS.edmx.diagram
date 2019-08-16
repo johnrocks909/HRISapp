@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dccd002b1d3a45608c0eb84f1c06d5bc" Name="Diagram1">
+        <EntityTypeShape EntityType="HRISDBModel.tOrgCluster" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tOrgDepartment" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tOrgDivision" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tOrgSection" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tOrgStructure" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tOrgUnit" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tRSPEmployee" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tRSPEmploymentStatu" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tRSPlantillaMagnaCarta" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tRSPMagnaCarta" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tRSPPlantilla" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tRSPPlantillaPersonnel" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tRSPPosition" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tRSPSalaryTable" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tRSPSalaryTableDetail" Width="1.5" PointX="12" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tRSPServiceRecord" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRISDBModel.tRSPServiceRecordRemark" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="HRISDBModel.FK_tOrgStructure_tOrgCluster" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tOrgStructure_tOrgDepartment" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tOrgStructure_tOrgDivision" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tOrgStructure_tOrgSection1" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tOrgStructure_tOrgUnit" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tRSPPlantilla_tOrgStructure" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tRSPPlantillaPersonnel_tRSPEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tRSPServiceRecord_tRSPEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tRSPServiceRecordRemark_tRSPEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tRSPPlantilla_tRSPEmploymentStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tRSPlantillaMagnaCarta_tRSPMagnaCarta" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tRSPlantillaMagnaCarta_tRSPPlantilla" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tRSPPlantilla_tRSPPosition" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tRSPPlantillaPersonnel_tRSPPlantilla" ManuallyRouted="false" />
+        <AssociationConnector Association="HRISDBModel.FK_tRSPSalaryTableDetail_tRSPSalaryTable" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

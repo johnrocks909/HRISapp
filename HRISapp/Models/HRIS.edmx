@@ -1,0 +1,1129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HRISDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tOrgCluster">
+          <Key>
+            <PropertyRef Name="clusterCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clusterCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="clusterName" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tOrgDepartment">
+          <Key>
+            <PropertyRef Name="departmentCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="departmentCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="departmentName" Type="varchar" MaxLength="150" />
+          <Property Name="shortDepartmentName" Type="varchar" MaxLength="10" />
+          <Property Name="orderNo" Type="int" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="functionCode" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="tOrgDivision">
+          <Key>
+            <PropertyRef Name="divisionCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="divisionCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="divisionName" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tOrgSection">
+          <Key>
+            <PropertyRef Name="sectionCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sectionCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="sectionName" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tOrgStructure">
+          <Key>
+            <PropertyRef Name="structureCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="structureCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="clusterCode" Type="varchar" MaxLength="20" />
+          <Property Name="departmentCode" Type="varchar" MaxLength="20" />
+          <Property Name="divisionCode" Type="varchar" MaxLength="20" />
+          <Property Name="sectionCode" Type="varchar" MaxLength="20" />
+          <Property Name="unitCode" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tOrgUnit">
+          <Key>
+            <PropertyRef Name="unitCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unitCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="unitName" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tRSPEmployee">
+          <Key>
+            <PropertyRef Name="EIC" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EIC" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="idNo" Type="varchar" MaxLength="6" />
+          <Property Name="lastName" Type="varchar" MaxLength="25" />
+          <Property Name="firstName" Type="varchar" MaxLength="25" />
+          <Property Name="middleName" Type="varchar" MaxLength="25" />
+          <Property Name="extName" Type="varchar" MaxLength="4" />
+          <Property Name="birthDate" Type="date" />
+          <Property Name="birthPlace" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tRSPEmploymentStatus">
+          <Key>
+            <PropertyRef Name="employmentStatusCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employmentStatusCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="employmentStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tRSPlantillaMagnaCarta">
+          <Key>
+            <PropertyRef Name="recNo" />
+          </Key>
+          <Property Name="recNo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="plantillaCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="magnaCode" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tRSPMagnaCarta">
+          <Key>
+            <PropertyRef Name="magnaCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="magnaCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="magnaCarta" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tRSPPlantilla">
+          <Key>
+            <PropertyRef Name="plantillaCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="plantillaCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="oldItemNo" Type="int" />
+          <Property Name="newItemNo" Type="int" />
+          <Property Name="structureCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="positionCode" Type="varchar" MaxLength="20" />
+          <Property Name="isFunded" Type="bit" />
+          <Property Name="employmentStatusCode" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tRSPPlantillaPersonnel">
+          <Key>
+            <PropertyRef Name="recNo" />
+          </Key>
+          <Property Name="recNo" Type="int" Nullable="false" />
+          <Property Name="plantillaCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EIC" Type="varchar" MaxLength="20" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tRSPPosition">
+          <Key>
+            <PropertyRef Name="positionCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="positionCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="positionTitle" Type="varchar" MaxLength="150" />
+          <Property Name="shortPositionTitle" Type="varchar" MaxLength="50" />
+          <Property Name="acronym" Type="varchar" MaxLength="20" />
+          <Property Name="salaryGrade" Type="int" />
+          <Property Name="positionLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="tRSPSalaryTable">
+          <Key>
+            <PropertyRef Name="salaryCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="salaryCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="remarks" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tRSPSalaryTableDetail">
+          <Key>
+            <PropertyRef Name="salaryDetailCode" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="salaryDetailCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="salaryCode" Type="varchar" MaxLength="10" />
+          <Property Name="salaryGrade" Type="int" Nullable="false" />
+          <Property Name="step" Type="int" />
+          <Property Name="rateMonth" Type="money" />
+          <Property Name="rateDay" Type="money" />
+        </EntityType>
+        <EntityType Name="tRSPServiceRecord">
+          <Key>
+            <PropertyRef Name="recNo" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EIC" Type="varchar" MaxLength="20" />
+          <Property Name="dateFrom" Type="date" />
+          <Property Name="dateTo" Type="date" />
+          <Property Name="positionTitle" Type="varchar" MaxLength="150" />
+          <Property Name="employmentStatus" Type="varchar" MaxLength="50" />
+          <Property Name="salary" Type="varchar" MaxLength="20" />
+          <Property Name="placeOfAssignment" Type="varchar" MaxLength="30" />
+          <Property Name="branch" Type="varchar" MaxLength="20" />
+          <Property Name="LWOP" Type="varchar" MaxLength="20" />
+          <Property Name="separationCause" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tRSPServiceRecordRemark">
+          <Key>
+            <PropertyRef Name="recNo" />
+          </Key>
+          <Property Name="recNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EIC" Type="varchar" MaxLength="20" />
+          <Property Name="remarks" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tOrgStructure_tOrgCluster">
+          <End Role="tOrgCluster" Type="Self.tOrgCluster" Multiplicity="0..1" />
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgCluster">
+              <PropertyRef Name="clusterCode" />
+            </Principal>
+            <Dependent Role="tOrgStructure">
+              <PropertyRef Name="clusterCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrgStructure_tOrgDepartment">
+          <End Role="tOrgDepartment" Type="Self.tOrgDepartment" Multiplicity="0..1" />
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgDepartment">
+              <PropertyRef Name="departmentCode" />
+            </Principal>
+            <Dependent Role="tOrgStructure">
+              <PropertyRef Name="departmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrgStructure_tOrgDivision">
+          <End Role="tOrgDivision" Type="Self.tOrgDivision" Multiplicity="0..1" />
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgDivision">
+              <PropertyRef Name="divisionCode" />
+            </Principal>
+            <Dependent Role="tOrgStructure">
+              <PropertyRef Name="divisionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrgStructure_tOrgSection1">
+          <End Role="tOrgSection" Type="Self.tOrgSection" Multiplicity="0..1" />
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgSection">
+              <PropertyRef Name="sectionCode" />
+            </Principal>
+            <Dependent Role="tOrgStructure">
+              <PropertyRef Name="sectionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrgStructure_tOrgUnit">
+          <End Role="tOrgUnit" Type="Self.tOrgUnit" Multiplicity="0..1" />
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgUnit">
+              <PropertyRef Name="unitCode" />
+            </Principal>
+            <Dependent Role="tOrgStructure">
+              <PropertyRef Name="unitCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPlantillaMagnaCarta_tRSPMagnaCarta">
+          <End Role="tRSPMagnaCarta" Type="Self.tRSPMagnaCarta" Multiplicity="1" />
+          <End Role="tRSPlantillaMagnaCarta" Type="Self.tRSPlantillaMagnaCarta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPMagnaCarta">
+              <PropertyRef Name="magnaCode" />
+            </Principal>
+            <Dependent Role="tRSPlantillaMagnaCarta">
+              <PropertyRef Name="magnaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPlantillaMagnaCarta_tRSPPlantilla">
+          <End Role="tRSPPlantilla" Type="Self.tRSPPlantilla" Multiplicity="1" />
+          <End Role="tRSPlantillaMagnaCarta" Type="Self.tRSPlantillaMagnaCarta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPPlantilla">
+              <PropertyRef Name="plantillaCode" />
+            </Principal>
+            <Dependent Role="tRSPlantillaMagnaCarta">
+              <PropertyRef Name="plantillaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPPlantilla_tOrgStructure">
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="1" />
+          <End Role="tRSPPlantilla" Type="Self.tRSPPlantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgStructure">
+              <PropertyRef Name="structureCode" />
+            </Principal>
+            <Dependent Role="tRSPPlantilla">
+              <PropertyRef Name="structureCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPPlantilla_tRSPEmploymentStatus">
+          <End Role="tRSPEmploymentStatus" Type="Self.tRSPEmploymentStatus" Multiplicity="0..1" />
+          <End Role="tRSPPlantilla" Type="Self.tRSPPlantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPEmploymentStatus">
+              <PropertyRef Name="employmentStatusCode" />
+            </Principal>
+            <Dependent Role="tRSPPlantilla">
+              <PropertyRef Name="employmentStatusCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPPlantilla_tRSPPosition">
+          <End Role="tRSPPosition" Type="Self.tRSPPosition" Multiplicity="0..1" />
+          <End Role="tRSPPlantilla" Type="Self.tRSPPlantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPPosition">
+              <PropertyRef Name="positionCode" />
+            </Principal>
+            <Dependent Role="tRSPPlantilla">
+              <PropertyRef Name="positionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPPlantillaPersonnel_tRSPEmployee">
+          <End Role="tRSPEmployee" Type="Self.tRSPEmployee" Multiplicity="0..1" />
+          <End Role="tRSPPlantillaPersonnel" Type="Self.tRSPPlantillaPersonnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPEmployee">
+              <PropertyRef Name="EIC" />
+            </Principal>
+            <Dependent Role="tRSPPlantillaPersonnel">
+              <PropertyRef Name="EIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPPlantillaPersonnel_tRSPPlantilla">
+          <End Role="tRSPPlantilla" Type="Self.tRSPPlantilla" Multiplicity="1" />
+          <End Role="tRSPPlantillaPersonnel" Type="Self.tRSPPlantillaPersonnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPPlantilla">
+              <PropertyRef Name="plantillaCode" />
+            </Principal>
+            <Dependent Role="tRSPPlantillaPersonnel">
+              <PropertyRef Name="plantillaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPSalaryTableDetail_tRSPSalaryTable">
+          <End Role="tRSPSalaryTable" Type="Self.tRSPSalaryTable" Multiplicity="0..1" />
+          <End Role="tRSPSalaryTableDetail" Type="Self.tRSPSalaryTableDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPSalaryTable">
+              <PropertyRef Name="salaryCode" />
+            </Principal>
+            <Dependent Role="tRSPSalaryTableDetail">
+              <PropertyRef Name="salaryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPServiceRecord_tRSPEmployee">
+          <End Role="tRSPEmployee" Type="Self.tRSPEmployee" Multiplicity="0..1" />
+          <End Role="tRSPServiceRecord" Type="Self.tRSPServiceRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPEmployee">
+              <PropertyRef Name="EIC" />
+            </Principal>
+            <Dependent Role="tRSPServiceRecord">
+              <PropertyRef Name="EIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPServiceRecordRemark_tRSPEmployee">
+          <End Role="tRSPEmployee" Type="Self.tRSPEmployee" Multiplicity="0..1" />
+          <End Role="tRSPServiceRecordRemark" Type="Self.tRSPServiceRecordRemark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPEmployee">
+              <PropertyRef Name="EIC" />
+            </Principal>
+            <Dependent Role="tRSPServiceRecordRemark">
+              <PropertyRef Name="EIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HRISDBModelStoreContainer">
+          <EntitySet Name="tOrgCluster" EntityType="Self.tOrgCluster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tOrgDepartment" EntityType="Self.tOrgDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tOrgDivision" EntityType="Self.tOrgDivision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tOrgSection" EntityType="Self.tOrgSection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tOrgStructure" EntityType="Self.tOrgStructure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tOrgUnit" EntityType="Self.tOrgUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRSPEmployee" EntityType="Self.tRSPEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRSPEmploymentStatus" EntityType="Self.tRSPEmploymentStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRSPlantillaMagnaCarta" EntityType="Self.tRSPlantillaMagnaCarta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRSPMagnaCarta" EntityType="Self.tRSPMagnaCarta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRSPPlantilla" EntityType="Self.tRSPPlantilla" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRSPPlantillaPersonnel" EntityType="Self.tRSPPlantillaPersonnel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRSPPosition" EntityType="Self.tRSPPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRSPSalaryTable" EntityType="Self.tRSPSalaryTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRSPSalaryTableDetail" EntityType="Self.tRSPSalaryTableDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRSPServiceRecord" EntityType="Self.tRSPServiceRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRSPServiceRecordRemark" EntityType="Self.tRSPServiceRecordRemark" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tOrgStructure_tOrgCluster" Association="Self.FK_tOrgStructure_tOrgCluster">
+            <End Role="tOrgCluster" EntitySet="tOrgCluster" />
+            <End Role="tOrgStructure" EntitySet="tOrgStructure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrgStructure_tOrgDepartment" Association="Self.FK_tOrgStructure_tOrgDepartment">
+            <End Role="tOrgDepartment" EntitySet="tOrgDepartment" />
+            <End Role="tOrgStructure" EntitySet="tOrgStructure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrgStructure_tOrgDivision" Association="Self.FK_tOrgStructure_tOrgDivision">
+            <End Role="tOrgDivision" EntitySet="tOrgDivision" />
+            <End Role="tOrgStructure" EntitySet="tOrgStructure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrgStructure_tOrgSection1" Association="Self.FK_tOrgStructure_tOrgSection1">
+            <End Role="tOrgSection" EntitySet="tOrgSection" />
+            <End Role="tOrgStructure" EntitySet="tOrgStructure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrgStructure_tOrgUnit" Association="Self.FK_tOrgStructure_tOrgUnit">
+            <End Role="tOrgUnit" EntitySet="tOrgUnit" />
+            <End Role="tOrgStructure" EntitySet="tOrgStructure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPlantillaMagnaCarta_tRSPMagnaCarta" Association="Self.FK_tRSPlantillaMagnaCarta_tRSPMagnaCarta">
+            <End Role="tRSPMagnaCarta" EntitySet="tRSPMagnaCarta" />
+            <End Role="tRSPlantillaMagnaCarta" EntitySet="tRSPlantillaMagnaCarta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPlantillaMagnaCarta_tRSPPlantilla" Association="Self.FK_tRSPlantillaMagnaCarta_tRSPPlantilla">
+            <End Role="tRSPPlantilla" EntitySet="tRSPPlantilla" />
+            <End Role="tRSPlantillaMagnaCarta" EntitySet="tRSPlantillaMagnaCarta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPPlantilla_tOrgStructure" Association="Self.FK_tRSPPlantilla_tOrgStructure">
+            <End Role="tOrgStructure" EntitySet="tOrgStructure" />
+            <End Role="tRSPPlantilla" EntitySet="tRSPPlantilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPPlantilla_tRSPEmploymentStatus" Association="Self.FK_tRSPPlantilla_tRSPEmploymentStatus">
+            <End Role="tRSPEmploymentStatus" EntitySet="tRSPEmploymentStatus" />
+            <End Role="tRSPPlantilla" EntitySet="tRSPPlantilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPPlantilla_tRSPPosition" Association="Self.FK_tRSPPlantilla_tRSPPosition">
+            <End Role="tRSPPosition" EntitySet="tRSPPosition" />
+            <End Role="tRSPPlantilla" EntitySet="tRSPPlantilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPPlantillaPersonnel_tRSPEmployee" Association="Self.FK_tRSPPlantillaPersonnel_tRSPEmployee">
+            <End Role="tRSPEmployee" EntitySet="tRSPEmployee" />
+            <End Role="tRSPPlantillaPersonnel" EntitySet="tRSPPlantillaPersonnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPPlantillaPersonnel_tRSPPlantilla" Association="Self.FK_tRSPPlantillaPersonnel_tRSPPlantilla">
+            <End Role="tRSPPlantilla" EntitySet="tRSPPlantilla" />
+            <End Role="tRSPPlantillaPersonnel" EntitySet="tRSPPlantillaPersonnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPSalaryTableDetail_tRSPSalaryTable" Association="Self.FK_tRSPSalaryTableDetail_tRSPSalaryTable">
+            <End Role="tRSPSalaryTable" EntitySet="tRSPSalaryTable" />
+            <End Role="tRSPSalaryTableDetail" EntitySet="tRSPSalaryTableDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPServiceRecord_tRSPEmployee" Association="Self.FK_tRSPServiceRecord_tRSPEmployee">
+            <End Role="tRSPEmployee" EntitySet="tRSPEmployee" />
+            <End Role="tRSPServiceRecord" EntitySet="tRSPServiceRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPServiceRecordRemark_tRSPEmployee" Association="Self.FK_tRSPServiceRecordRemark_tRSPEmployee">
+            <End Role="tRSPEmployee" EntitySet="tRSPEmployee" />
+            <End Role="tRSPServiceRecordRemark" EntitySet="tRSPServiceRecordRemark" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HRISDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tOrgCluster">
+          <Key>
+            <PropertyRef Name="clusterCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clusterCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="clusterName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tOrgStructures" Relationship="Self.FK_tOrgStructure_tOrgCluster" FromRole="tOrgCluster" ToRole="tOrgStructure" />
+        </EntityType>
+        <EntityType Name="tOrgDepartment">
+          <Key>
+            <PropertyRef Name="departmentCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="departmentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departmentName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="shortDepartmentName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="orderNo" Type="Int32" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="functionCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tOrgStructures" Relationship="Self.FK_tOrgStructure_tOrgDepartment" FromRole="tOrgDepartment" ToRole="tOrgStructure" />
+        </EntityType>
+        <EntityType Name="tOrgDivision">
+          <Key>
+            <PropertyRef Name="divisionCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="divisionCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="divisionName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tOrgStructures" Relationship="Self.FK_tOrgStructure_tOrgDivision" FromRole="tOrgDivision" ToRole="tOrgStructure" />
+        </EntityType>
+        <EntityType Name="tOrgSection">
+          <Key>
+            <PropertyRef Name="sectionCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sectionCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sectionName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tOrgStructures" Relationship="Self.FK_tOrgStructure_tOrgSection1" FromRole="tOrgSection" ToRole="tOrgStructure" />
+        </EntityType>
+        <EntityType Name="tOrgStructure">
+          <Key>
+            <PropertyRef Name="structureCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="structureCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="clusterCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="departmentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="divisionCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="sectionCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="unitCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tOrgCluster" Relationship="Self.FK_tOrgStructure_tOrgCluster" FromRole="tOrgStructure" ToRole="tOrgCluster" />
+          <NavigationProperty Name="tOrgDepartment" Relationship="Self.FK_tOrgStructure_tOrgDepartment" FromRole="tOrgStructure" ToRole="tOrgDepartment" />
+          <NavigationProperty Name="tOrgDivision" Relationship="Self.FK_tOrgStructure_tOrgDivision" FromRole="tOrgStructure" ToRole="tOrgDivision" />
+          <NavigationProperty Name="tOrgSection" Relationship="Self.FK_tOrgStructure_tOrgSection1" FromRole="tOrgStructure" ToRole="tOrgSection" />
+          <NavigationProperty Name="tOrgUnit" Relationship="Self.FK_tOrgStructure_tOrgUnit" FromRole="tOrgStructure" ToRole="tOrgUnit" />
+          <NavigationProperty Name="tRSPPlantillas" Relationship="Self.FK_tRSPPlantilla_tOrgStructure" FromRole="tOrgStructure" ToRole="tRSPPlantilla" />
+        </EntityType>
+        <EntityType Name="tOrgUnit">
+          <Key>
+            <PropertyRef Name="unitCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unitCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="unitName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tOrgStructures" Relationship="Self.FK_tOrgStructure_tOrgUnit" FromRole="tOrgUnit" ToRole="tOrgStructure" />
+        </EntityType>
+        <EntityType Name="tRSPEmployee">
+          <Key>
+            <PropertyRef Name="EIC" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idNo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="firstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="middleName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="extName" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="birthDate" Type="DateTime" Precision="0" />
+          <Property Name="birthPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tRSPPlantillaPersonnels" Relationship="Self.FK_tRSPPlantillaPersonnel_tRSPEmployee" FromRole="tRSPEmployee" ToRole="tRSPPlantillaPersonnel" />
+          <NavigationProperty Name="tRSPServiceRecords" Relationship="Self.FK_tRSPServiceRecord_tRSPEmployee" FromRole="tRSPEmployee" ToRole="tRSPServiceRecord" />
+          <NavigationProperty Name="tRSPServiceRecordRemarks" Relationship="Self.FK_tRSPServiceRecordRemark_tRSPEmployee" FromRole="tRSPEmployee" ToRole="tRSPServiceRecordRemark" />
+        </EntityType>
+        <EntityType Name="tRSPEmploymentStatu">
+          <Key>
+            <PropertyRef Name="employmentStatusCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employmentStatusCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="employmentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tRSPPlantillas" Relationship="Self.FK_tRSPPlantilla_tRSPEmploymentStatus" FromRole="tRSPEmploymentStatus" ToRole="tRSPPlantilla" />
+        </EntityType>
+        <EntityType Name="tRSPlantillaMagnaCarta">
+          <Key>
+            <PropertyRef Name="recNo" />
+          </Key>
+          <Property Name="recNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="plantillaCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="magnaCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tRSPMagnaCarta" Relationship="Self.FK_tRSPlantillaMagnaCarta_tRSPMagnaCarta" FromRole="tRSPlantillaMagnaCarta" ToRole="tRSPMagnaCarta" />
+          <NavigationProperty Name="tRSPPlantilla" Relationship="Self.FK_tRSPlantillaMagnaCarta_tRSPPlantilla" FromRole="tRSPlantillaMagnaCarta" ToRole="tRSPPlantilla" />
+        </EntityType>
+        <EntityType Name="tRSPMagnaCarta">
+          <Key>
+            <PropertyRef Name="magnaCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="magnaCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="magnaCarta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tRSPlantillaMagnaCartas" Relationship="Self.FK_tRSPlantillaMagnaCarta_tRSPMagnaCarta" FromRole="tRSPMagnaCarta" ToRole="tRSPlantillaMagnaCarta" />
+        </EntityType>
+        <EntityType Name="tRSPPlantilla">
+          <Key>
+            <PropertyRef Name="plantillaCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="plantillaCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="oldItemNo" Type="Int32" />
+          <Property Name="newItemNo" Type="Int32" />
+          <Property Name="structureCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="positionCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="isFunded" Type="Boolean" />
+          <Property Name="employmentStatusCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tOrgStructure" Relationship="Self.FK_tRSPPlantilla_tOrgStructure" FromRole="tRSPPlantilla" ToRole="tOrgStructure" />
+          <NavigationProperty Name="tRSPEmploymentStatu" Relationship="Self.FK_tRSPPlantilla_tRSPEmploymentStatus" FromRole="tRSPPlantilla" ToRole="tRSPEmploymentStatus" />
+          <NavigationProperty Name="tRSPlantillaMagnaCartas" Relationship="Self.FK_tRSPlantillaMagnaCarta_tRSPPlantilla" FromRole="tRSPPlantilla" ToRole="tRSPlantillaMagnaCarta" />
+          <NavigationProperty Name="tRSPPosition" Relationship="Self.FK_tRSPPlantilla_tRSPPosition" FromRole="tRSPPlantilla" ToRole="tRSPPosition" />
+          <NavigationProperty Name="tRSPPlantillaPersonnels" Relationship="Self.FK_tRSPPlantillaPersonnel_tRSPPlantilla" FromRole="tRSPPlantilla" ToRole="tRSPPlantillaPersonnel" />
+        </EntityType>
+        <EntityType Name="tRSPPlantillaPersonnel">
+          <Key>
+            <PropertyRef Name="recNo" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" />
+          <Property Name="plantillaCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
+          <NavigationProperty Name="tRSPEmployee" Relationship="Self.FK_tRSPPlantillaPersonnel_tRSPEmployee" FromRole="tRSPPlantillaPersonnel" ToRole="tRSPEmployee" />
+          <NavigationProperty Name="tRSPPlantilla" Relationship="Self.FK_tRSPPlantillaPersonnel_tRSPPlantilla" FromRole="tRSPPlantillaPersonnel" ToRole="tRSPPlantilla" />
+        </EntityType>
+        <EntityType Name="tRSPPosition">
+          <Key>
+            <PropertyRef Name="positionCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="positionCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="positionTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="shortPositionTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="acronym" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="salaryGrade" Type="Int32" />
+          <Property Name="positionLevel" Type="Int32" />
+          <NavigationProperty Name="tRSPPlantillas" Relationship="Self.FK_tRSPPlantilla_tRSPPosition" FromRole="tRSPPosition" ToRole="tRSPPlantilla" />
+        </EntityType>
+        <EntityType Name="tRSPSalaryTable">
+          <Key>
+            <PropertyRef Name="salaryCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="salaryCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tRSPSalaryTableDetails" Relationship="Self.FK_tRSPSalaryTableDetail_tRSPSalaryTable" FromRole="tRSPSalaryTable" ToRole="tRSPSalaryTableDetail" />
+        </EntityType>
+        <EntityType Name="tRSPSalaryTableDetail">
+          <Key>
+            <PropertyRef Name="salaryDetailCode" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="salaryDetailCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="salaryCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="salaryGrade" Type="Int32" Nullable="false" />
+          <Property Name="step" Type="Int32" />
+          <Property Name="rateMonth" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="rateDay" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="tRSPSalaryTable" Relationship="Self.FK_tRSPSalaryTableDetail_tRSPSalaryTable" FromRole="tRSPSalaryTableDetail" ToRole="tRSPSalaryTable" />
+        </EntityType>
+        <EntityType Name="tRSPServiceRecord">
+          <Key>
+            <PropertyRef Name="recNo" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dateFrom" Type="DateTime" Precision="0" />
+          <Property Name="dateTo" Type="DateTime" Precision="0" />
+          <Property Name="positionTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="employmentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="placeOfAssignment" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="branch" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LWOP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="separationCause" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tRSPEmployee" Relationship="Self.FK_tRSPServiceRecord_tRSPEmployee" FromRole="tRSPServiceRecord" ToRole="tRSPEmployee" />
+        </EntityType>
+        <EntityType Name="tRSPServiceRecordRemark">
+          <Key>
+            <PropertyRef Name="recNo" />
+          </Key>
+          <Property Name="recNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tRSPEmployee" Relationship="Self.FK_tRSPServiceRecordRemark_tRSPEmployee" FromRole="tRSPServiceRecordRemark" ToRole="tRSPEmployee" />
+        </EntityType>
+        <Association Name="FK_tOrgStructure_tOrgCluster">
+          <End Role="tOrgCluster" Type="Self.tOrgCluster" Multiplicity="0..1" />
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgCluster">
+              <PropertyRef Name="clusterCode" />
+            </Principal>
+            <Dependent Role="tOrgStructure">
+              <PropertyRef Name="clusterCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrgStructure_tOrgDepartment">
+          <End Role="tOrgDepartment" Type="Self.tOrgDepartment" Multiplicity="0..1" />
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgDepartment">
+              <PropertyRef Name="departmentCode" />
+            </Principal>
+            <Dependent Role="tOrgStructure">
+              <PropertyRef Name="departmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrgStructure_tOrgDivision">
+          <End Role="tOrgDivision" Type="Self.tOrgDivision" Multiplicity="0..1" />
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgDivision">
+              <PropertyRef Name="divisionCode" />
+            </Principal>
+            <Dependent Role="tOrgStructure">
+              <PropertyRef Name="divisionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrgStructure_tOrgSection1">
+          <End Role="tOrgSection" Type="Self.tOrgSection" Multiplicity="0..1" />
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgSection">
+              <PropertyRef Name="sectionCode" />
+            </Principal>
+            <Dependent Role="tOrgStructure">
+              <PropertyRef Name="sectionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tOrgStructure_tOrgUnit">
+          <End Role="tOrgUnit" Type="Self.tOrgUnit" Multiplicity="0..1" />
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgUnit">
+              <PropertyRef Name="unitCode" />
+            </Principal>
+            <Dependent Role="tOrgStructure">
+              <PropertyRef Name="unitCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPPlantilla_tOrgStructure">
+          <End Role="tOrgStructure" Type="Self.tOrgStructure" Multiplicity="1" />
+          <End Role="tRSPPlantilla" Type="Self.tRSPPlantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tOrgStructure">
+              <PropertyRef Name="structureCode" />
+            </Principal>
+            <Dependent Role="tRSPPlantilla">
+              <PropertyRef Name="structureCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPPlantillaPersonnel_tRSPEmployee">
+          <End Role="tRSPEmployee" Type="Self.tRSPEmployee" Multiplicity="0..1" />
+          <End Role="tRSPPlantillaPersonnel" Type="Self.tRSPPlantillaPersonnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPEmployee">
+              <PropertyRef Name="EIC" />
+            </Principal>
+            <Dependent Role="tRSPPlantillaPersonnel">
+              <PropertyRef Name="EIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPServiceRecord_tRSPEmployee">
+          <End Role="tRSPEmployee" Type="Self.tRSPEmployee" Multiplicity="0..1" />
+          <End Role="tRSPServiceRecord" Type="Self.tRSPServiceRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPEmployee">
+              <PropertyRef Name="EIC" />
+            </Principal>
+            <Dependent Role="tRSPServiceRecord">
+              <PropertyRef Name="EIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPServiceRecordRemark_tRSPEmployee">
+          <End Role="tRSPEmployee" Type="Self.tRSPEmployee" Multiplicity="0..1" />
+          <End Role="tRSPServiceRecordRemark" Type="Self.tRSPServiceRecordRemark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPEmployee">
+              <PropertyRef Name="EIC" />
+            </Principal>
+            <Dependent Role="tRSPServiceRecordRemark">
+              <PropertyRef Name="EIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPPlantilla_tRSPEmploymentStatus">
+          <End Role="tRSPEmploymentStatus" Type="Self.tRSPEmploymentStatu" Multiplicity="0..1" />
+          <End Role="tRSPPlantilla" Type="Self.tRSPPlantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPEmploymentStatus">
+              <PropertyRef Name="employmentStatusCode" />
+            </Principal>
+            <Dependent Role="tRSPPlantilla">
+              <PropertyRef Name="employmentStatusCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPlantillaMagnaCarta_tRSPMagnaCarta">
+          <End Role="tRSPMagnaCarta" Type="Self.tRSPMagnaCarta" Multiplicity="1" />
+          <End Role="tRSPlantillaMagnaCarta" Type="Self.tRSPlantillaMagnaCarta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPMagnaCarta">
+              <PropertyRef Name="magnaCode" />
+            </Principal>
+            <Dependent Role="tRSPlantillaMagnaCarta">
+              <PropertyRef Name="magnaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPlantillaMagnaCarta_tRSPPlantilla">
+          <End Role="tRSPPlantilla" Type="Self.tRSPPlantilla" Multiplicity="1" />
+          <End Role="tRSPlantillaMagnaCarta" Type="Self.tRSPlantillaMagnaCarta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPPlantilla">
+              <PropertyRef Name="plantillaCode" />
+            </Principal>
+            <Dependent Role="tRSPlantillaMagnaCarta">
+              <PropertyRef Name="plantillaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPPlantilla_tRSPPosition">
+          <End Role="tRSPPosition" Type="Self.tRSPPosition" Multiplicity="0..1" />
+          <End Role="tRSPPlantilla" Type="Self.tRSPPlantilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPPosition">
+              <PropertyRef Name="positionCode" />
+            </Principal>
+            <Dependent Role="tRSPPlantilla">
+              <PropertyRef Name="positionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPPlantillaPersonnel_tRSPPlantilla">
+          <End Role="tRSPPlantilla" Type="Self.tRSPPlantilla" Multiplicity="1" />
+          <End Role="tRSPPlantillaPersonnel" Type="Self.tRSPPlantillaPersonnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPPlantilla">
+              <PropertyRef Name="plantillaCode" />
+            </Principal>
+            <Dependent Role="tRSPPlantillaPersonnel">
+              <PropertyRef Name="plantillaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRSPSalaryTableDetail_tRSPSalaryTable">
+          <End Role="tRSPSalaryTable" Type="Self.tRSPSalaryTable" Multiplicity="0..1" />
+          <End Role="tRSPSalaryTableDetail" Type="Self.tRSPSalaryTableDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRSPSalaryTable">
+              <PropertyRef Name="salaryCode" />
+            </Principal>
+            <Dependent Role="tRSPSalaryTableDetail">
+              <PropertyRef Name="salaryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HRISDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tOrgClusters" EntityType="Self.tOrgCluster" />
+          <EntitySet Name="tOrgDepartments" EntityType="Self.tOrgDepartment" />
+          <EntitySet Name="tOrgDivisions" EntityType="Self.tOrgDivision" />
+          <EntitySet Name="tOrgSections" EntityType="Self.tOrgSection" />
+          <EntitySet Name="tOrgStructures" EntityType="Self.tOrgStructure" />
+          <EntitySet Name="tOrgUnits" EntityType="Self.tOrgUnit" />
+          <EntitySet Name="tRSPEmployees" EntityType="Self.tRSPEmployee" />
+          <EntitySet Name="tRSPEmploymentStatus" EntityType="Self.tRSPEmploymentStatu" />
+          <EntitySet Name="tRSPlantillaMagnaCartas" EntityType="Self.tRSPlantillaMagnaCarta" />
+          <EntitySet Name="tRSPMagnaCartas" EntityType="Self.tRSPMagnaCarta" />
+          <EntitySet Name="tRSPPlantillas" EntityType="Self.tRSPPlantilla" />
+          <EntitySet Name="tRSPPlantillaPersonnels" EntityType="Self.tRSPPlantillaPersonnel" />
+          <EntitySet Name="tRSPPositions" EntityType="Self.tRSPPosition" />
+          <EntitySet Name="tRSPSalaryTables" EntityType="Self.tRSPSalaryTable" />
+          <EntitySet Name="tRSPSalaryTableDetails" EntityType="Self.tRSPSalaryTableDetail" />
+          <EntitySet Name="tRSPServiceRecords" EntityType="Self.tRSPServiceRecord" />
+          <EntitySet Name="tRSPServiceRecordRemarks" EntityType="Self.tRSPServiceRecordRemark" />
+          <AssociationSet Name="FK_tOrgStructure_tOrgCluster" Association="Self.FK_tOrgStructure_tOrgCluster">
+            <End Role="tOrgCluster" EntitySet="tOrgClusters" />
+            <End Role="tOrgStructure" EntitySet="tOrgStructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrgStructure_tOrgDepartment" Association="Self.FK_tOrgStructure_tOrgDepartment">
+            <End Role="tOrgDepartment" EntitySet="tOrgDepartments" />
+            <End Role="tOrgStructure" EntitySet="tOrgStructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrgStructure_tOrgDivision" Association="Self.FK_tOrgStructure_tOrgDivision">
+            <End Role="tOrgDivision" EntitySet="tOrgDivisions" />
+            <End Role="tOrgStructure" EntitySet="tOrgStructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrgStructure_tOrgSection1" Association="Self.FK_tOrgStructure_tOrgSection1">
+            <End Role="tOrgSection" EntitySet="tOrgSections" />
+            <End Role="tOrgStructure" EntitySet="tOrgStructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tOrgStructure_tOrgUnit" Association="Self.FK_tOrgStructure_tOrgUnit">
+            <End Role="tOrgUnit" EntitySet="tOrgUnits" />
+            <End Role="tOrgStructure" EntitySet="tOrgStructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPPlantilla_tOrgStructure" Association="Self.FK_tRSPPlantilla_tOrgStructure">
+            <End Role="tOrgStructure" EntitySet="tOrgStructures" />
+            <End Role="tRSPPlantilla" EntitySet="tRSPPlantillas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPPlantillaPersonnel_tRSPEmployee" Association="Self.FK_tRSPPlantillaPersonnel_tRSPEmployee">
+            <End Role="tRSPEmployee" EntitySet="tRSPEmployees" />
+            <End Role="tRSPPlantillaPersonnel" EntitySet="tRSPPlantillaPersonnels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPServiceRecord_tRSPEmployee" Association="Self.FK_tRSPServiceRecord_tRSPEmployee">
+            <End Role="tRSPEmployee" EntitySet="tRSPEmployees" />
+            <End Role="tRSPServiceRecord" EntitySet="tRSPServiceRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPServiceRecordRemark_tRSPEmployee" Association="Self.FK_tRSPServiceRecordRemark_tRSPEmployee">
+            <End Role="tRSPEmployee" EntitySet="tRSPEmployees" />
+            <End Role="tRSPServiceRecordRemark" EntitySet="tRSPServiceRecordRemarks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPPlantilla_tRSPEmploymentStatus" Association="Self.FK_tRSPPlantilla_tRSPEmploymentStatus">
+            <End Role="tRSPEmploymentStatus" EntitySet="tRSPEmploymentStatus" />
+            <End Role="tRSPPlantilla" EntitySet="tRSPPlantillas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPlantillaMagnaCarta_tRSPMagnaCarta" Association="Self.FK_tRSPlantillaMagnaCarta_tRSPMagnaCarta">
+            <End Role="tRSPMagnaCarta" EntitySet="tRSPMagnaCartas" />
+            <End Role="tRSPlantillaMagnaCarta" EntitySet="tRSPlantillaMagnaCartas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPlantillaMagnaCarta_tRSPPlantilla" Association="Self.FK_tRSPlantillaMagnaCarta_tRSPPlantilla">
+            <End Role="tRSPPlantilla" EntitySet="tRSPPlantillas" />
+            <End Role="tRSPlantillaMagnaCarta" EntitySet="tRSPlantillaMagnaCartas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPPlantilla_tRSPPosition" Association="Self.FK_tRSPPlantilla_tRSPPosition">
+            <End Role="tRSPPosition" EntitySet="tRSPPositions" />
+            <End Role="tRSPPlantilla" EntitySet="tRSPPlantillas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPPlantillaPersonnel_tRSPPlantilla" Association="Self.FK_tRSPPlantillaPersonnel_tRSPPlantilla">
+            <End Role="tRSPPlantilla" EntitySet="tRSPPlantillas" />
+            <End Role="tRSPPlantillaPersonnel" EntitySet="tRSPPlantillaPersonnels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRSPSalaryTableDetail_tRSPSalaryTable" Association="Self.FK_tRSPSalaryTableDetail_tRSPSalaryTable">
+            <End Role="tRSPSalaryTable" EntitySet="tRSPSalaryTables" />
+            <End Role="tRSPSalaryTableDetail" EntitySet="tRSPSalaryTableDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HRISDBModelStoreContainer" CdmEntityContainer="HRISDBEntities">
+          <EntitySetMapping Name="tOrgClusters">
+            <EntityTypeMapping TypeName="HRISDBModel.tOrgCluster">
+              <MappingFragment StoreEntitySet="tOrgCluster">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="clusterCode" ColumnName="clusterCode" />
+                <ScalarProperty Name="clusterName" ColumnName="clusterName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tOrgDepartments">
+            <EntityTypeMapping TypeName="HRISDBModel.tOrgDepartment">
+              <MappingFragment StoreEntitySet="tOrgDepartment">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="departmentCode" ColumnName="departmentCode" />
+                <ScalarProperty Name="departmentName" ColumnName="departmentName" />
+                <ScalarProperty Name="shortDepartmentName" ColumnName="shortDepartmentName" />
+                <ScalarProperty Name="orderNo" ColumnName="orderNo" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="functionCode" ColumnName="functionCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tOrgDivisions">
+            <EntityTypeMapping TypeName="HRISDBModel.tOrgDivision">
+              <MappingFragment StoreEntitySet="tOrgDivision">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="divisionCode" ColumnName="divisionCode" />
+                <ScalarProperty Name="divisionName" ColumnName="divisionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tOrgSections">
+            <EntityTypeMapping TypeName="HRISDBModel.tOrgSection">
+              <MappingFragment StoreEntitySet="tOrgSection">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="sectionCode" ColumnName="sectionCode" />
+                <ScalarProperty Name="sectionName" ColumnName="sectionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tOrgStructures">
+            <EntityTypeMapping TypeName="HRISDBModel.tOrgStructure">
+              <MappingFragment StoreEntitySet="tOrgStructure">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="structureCode" ColumnName="structureCode" />
+                <ScalarProperty Name="clusterCode" ColumnName="clusterCode" />
+                <ScalarProperty Name="departmentCode" ColumnName="departmentCode" />
+                <ScalarProperty Name="divisionCode" ColumnName="divisionCode" />
+                <ScalarProperty Name="sectionCode" ColumnName="sectionCode" />
+                <ScalarProperty Name="unitCode" ColumnName="unitCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tOrgUnits">
+            <EntityTypeMapping TypeName="HRISDBModel.tOrgUnit">
+              <MappingFragment StoreEntitySet="tOrgUnit">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="unitCode" ColumnName="unitCode" />
+                <ScalarProperty Name="unitName" ColumnName="unitName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRSPEmployees">
+            <EntityTypeMapping TypeName="HRISDBModel.tRSPEmployee">
+              <MappingFragment StoreEntitySet="tRSPEmployee">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="EIC" ColumnName="EIC" />
+                <ScalarProperty Name="idNo" ColumnName="idNo" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="middleName" ColumnName="middleName" />
+                <ScalarProperty Name="extName" ColumnName="extName" />
+                <ScalarProperty Name="birthDate" ColumnName="birthDate" />
+                <ScalarProperty Name="birthPlace" ColumnName="birthPlace" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRSPEmploymentStatus">
+            <EntityTypeMapping TypeName="HRISDBModel.tRSPEmploymentStatu">
+              <MappingFragment StoreEntitySet="tRSPEmploymentStatus">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="employmentStatusCode" ColumnName="employmentStatusCode" />
+                <ScalarProperty Name="employmentStatus" ColumnName="employmentStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRSPlantillaMagnaCartas">
+            <EntityTypeMapping TypeName="HRISDBModel.tRSPlantillaMagnaCarta">
+              <MappingFragment StoreEntitySet="tRSPlantillaMagnaCarta">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="plantillaCode" ColumnName="plantillaCode" />
+                <ScalarProperty Name="magnaCode" ColumnName="magnaCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRSPMagnaCartas">
+            <EntityTypeMapping TypeName="HRISDBModel.tRSPMagnaCarta">
+              <MappingFragment StoreEntitySet="tRSPMagnaCarta">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="magnaCode" ColumnName="magnaCode" />
+                <ScalarProperty Name="magnaCarta" ColumnName="magnaCarta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRSPPlantillas">
+            <EntityTypeMapping TypeName="HRISDBModel.tRSPPlantilla">
+              <MappingFragment StoreEntitySet="tRSPPlantilla">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="plantillaCode" ColumnName="plantillaCode" />
+                <ScalarProperty Name="oldItemNo" ColumnName="oldItemNo" />
+                <ScalarProperty Name="newItemNo" ColumnName="newItemNo" />
+                <ScalarProperty Name="structureCode" ColumnName="structureCode" />
+                <ScalarProperty Name="positionCode" ColumnName="positionCode" />
+                <ScalarProperty Name="isFunded" ColumnName="isFunded" />
+                <ScalarProperty Name="employmentStatusCode" ColumnName="employmentStatusCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRSPPlantillaPersonnels">
+            <EntityTypeMapping TypeName="HRISDBModel.tRSPPlantillaPersonnel">
+              <MappingFragment StoreEntitySet="tRSPPlantillaPersonnel">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="plantillaCode" ColumnName="plantillaCode" />
+                <ScalarProperty Name="EIC" ColumnName="EIC" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRSPPositions">
+            <EntityTypeMapping TypeName="HRISDBModel.tRSPPosition">
+              <MappingFragment StoreEntitySet="tRSPPosition">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="positionCode" ColumnName="positionCode" />
+                <ScalarProperty Name="positionTitle" ColumnName="positionTitle" />
+                <ScalarProperty Name="shortPositionTitle" ColumnName="shortPositionTitle" />
+                <ScalarProperty Name="acronym" ColumnName="acronym" />
+                <ScalarProperty Name="salaryGrade" ColumnName="salaryGrade" />
+                <ScalarProperty Name="positionLevel" ColumnName="positionLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRSPSalaryTables">
+            <EntityTypeMapping TypeName="HRISDBModel.tRSPSalaryTable">
+              <MappingFragment StoreEntitySet="tRSPSalaryTable">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="salaryCode" ColumnName="salaryCode" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRSPSalaryTableDetails">
+            <EntityTypeMapping TypeName="HRISDBModel.tRSPSalaryTableDetail">
+              <MappingFragment StoreEntitySet="tRSPSalaryTableDetail">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="salaryDetailCode" ColumnName="salaryDetailCode" />
+                <ScalarProperty Name="salaryCode" ColumnName="salaryCode" />
+                <ScalarProperty Name="salaryGrade" ColumnName="salaryGrade" />
+                <ScalarProperty Name="step" ColumnName="step" />
+                <ScalarProperty Name="rateMonth" ColumnName="rateMonth" />
+                <ScalarProperty Name="rateDay" ColumnName="rateDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRSPServiceRecords">
+            <EntityTypeMapping TypeName="HRISDBModel.tRSPServiceRecord">
+              <MappingFragment StoreEntitySet="tRSPServiceRecord">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="EIC" ColumnName="EIC" />
+                <ScalarProperty Name="dateFrom" ColumnName="dateFrom" />
+                <ScalarProperty Name="dateTo" ColumnName="dateTo" />
+                <ScalarProperty Name="positionTitle" ColumnName="positionTitle" />
+                <ScalarProperty Name="employmentStatus" ColumnName="employmentStatus" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="placeOfAssignment" ColumnName="placeOfAssignment" />
+                <ScalarProperty Name="branch" ColumnName="branch" />
+                <ScalarProperty Name="LWOP" ColumnName="LWOP" />
+                <ScalarProperty Name="separationCause" ColumnName="separationCause" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRSPServiceRecordRemarks">
+            <EntityTypeMapping TypeName="HRISDBModel.tRSPServiceRecordRemark">
+              <MappingFragment StoreEntitySet="tRSPServiceRecordRemark">
+                <ScalarProperty Name="recNo" ColumnName="recNo" />
+                <ScalarProperty Name="EIC" ColumnName="EIC" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

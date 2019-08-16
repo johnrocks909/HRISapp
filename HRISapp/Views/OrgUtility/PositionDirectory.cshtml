@@ -1,0 +1,259 @@
+﻿
+@{
+    ViewBag.Title = "Position Directory";
+}
+
+<style>
+    .theader {
+        font-size: 1.5em;
+        font-weight: bolder;
+        vertical-align: middle;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .activeth {
+        font-size: 1.2em;
+        font-weight: bolder;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+
+<link href="~/Content/css/materialize.min.css" rel="stylesheet" />
+
+<div ng-module="PosUtility" ng-controller="PosUtilityController" ng-init="onLoad()">
+    <div class="col-md-12">
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        <li><a data-action="collapse"></a></li>
+                        <li><a data-action="reload"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="tabbable">
+                    <ul class="text-bold nav nav-lg nav-tabs nav-tabs-solid nav-tabs-component nav-justified">
+                        <li class="active"><a href="#Positions" data-toggle="tab"><i class="icon-city position-left"></i> <span> Positions</span></a></li>
+                        <li><a href="#MagnaCartas" data-toggle="tab"><i class="icon-office position-left"></i> Magnacartas</a></li>
+                        @*<li><a href="#Clusters" ng-click="selectFromList('division')" data-toggle="tab"><i class="icon-library2 position-left"></i> Divisions</a></li>
+                        <li><a href="#Clusters" ng-click="selectFromList('section')" data-toggle="tab"><i class="icon-home2 position-left"></i> Sections</a></li>
+                        <li><a href="#Clusters" ng-click="selectFromList('unit')" data-toggle="tab"><i class="icon-menu7 position-left"></i> Units</a></li>*@
+                    </ul>
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="Positions">
+                            <table st-persist="myTable" st-table="DirectoryLists" st-safe-src="Directory.positions" class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="vertical-align: middle" colspan="4">
+                                            <input st-search placeholder="Search..." class="input-sm form-control" type="search" />
+                                        </th>
+                                        <th style="text-align: center" colspan="2">
+                                            <button ng-if="!addNew" style="width: 60%" type="button" ng-click="addNewPosition(0,0)" class="btn bg-teal-400 btn-labeled"><b><i class="icon-reading"></i></b> Add</button>
+                                        </th>
+                                    </tr>
+                                    <tr ng-if="addNew">
+                                        <td colspan="6">
+                                            <form name="myForm" class="col-lg-12" style="border: solid 1px; border-radius: 8px">
+                                                <div class="col-lg-2" style="padding-top: 25px;">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-6">
+                                                            <button type="submit" style="width: 100%" ng-click="addNewPosition(addoff,1)" class="btn bg-teal-400"><span class="icon-checkmark2"></span></button>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <button type="button" style="width: 100%" ng-click="addNewPosition(0,0)" class="btn btn-danger"><span class="icon-cross3"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-lg-10">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-5">
+                                                            <input placeholder="Position Title" class="input-sm form-control" ng-model="addoff.positionTitle" st-search required maxlength="150"/>
+                                                            <div style="text-align: center; font-size: .8em; padding-bottom: 5px">Position Title</div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <input ng-model="addoff.shortPositionTitle" class="input-sm form-control" placeholder="Short Title" maxlength="50" />
+                                                            <div style="text-align: center; font-size: .8em; padding-bottom: 5px">Short Title</div>
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            <input ng-model="addoff.acronym" placeholder="Acronym" class="input-sm form-control" maxlength="20" />
+                                                            <div style="text-align: center; font-size: .8em; padding-bottom: 5px">Acronym</div>
+                                                        </div>
+                                                        <div class="col-lg-1">
+                                                            <input ng-model="addoff.salaryGrade" placeholder="SG" class="input-sm form-control" required type="number" />
+                                                            <div style="text-align: center; font-size: .8em; padding-bottom: 5px">SG</div>
+                                                        </div>
+                                                        <div class="col-lg-1">
+                                                            <div class="col-lg-12" style="padding-top: 5px;">
+                                                                Level<select ui-select2 style="width: 100%" ng-model="addoff.positionLevel" class="form-control" ng-options="a as a for a in [1,2,3]" />
+                                                            </div>
+                                                            @*<div class="col-lg-12" style="text-align: center; font-size: .8em; background-color: blue"></div>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="theader col-lg-4" st-sort="positionTitle">Position Title</th>
+                                        <th class="theader col-lg-3" st-sort="shortPositionTitle">Short Title</th>
+                                        <th class="theader col-lg-2" st-sort="acronym">Acronym</th>
+                                        <th class="theader col-lg-1" st-sort="salaryGrade">SG</th>
+                                        <th class="theader col-lg-1" st-sort="positionLevel">Level</th>
+                                        <th class="theader col-lg-1"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="row in DirectoryLists">
+                                        <td class="text-bold" style="font-size: 1.2em">
+                                            <div ng-if="row.goEdit">
+                                                <input ng-model="toedit.positionTitle" placeholder="Position Title" class="input-sm form-control" required maxlength="150"/>
+                                            </div>
+                                            <div ng-if="!row.goEdit">
+                                                {{row.positionTitle}}
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div ng-if="row.goEdit">
+                                                <input ng-model="toedit.shortPositionTitle" placeholder="Short Title" class="input-sm form-control" maxlength="50" />
+                                            </div>
+                                            <div ng-if="!row.goEdit">
+                                                {{row.shortPositionTitle}}
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div ng-if="row.goEdit">
+                                                <input ng-model="toedit.acronym" class="input-sm form-control" placeholder="Acronym" maxlength="20" />
+                                            </div>
+                                            <div ng-if="!row.goEdit">
+                                                {{row.acronym}}
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div ng-if="row.goEdit">
+                                                <input ng-model="toedit.salaryGrade" placeholder="SG" class="input-sm form-control" required type="number"/>
+                                            </div>
+                                            <div ng-if="!row.goEdit">
+                                                {{row.salaryGrade}}
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div ng-show="!row.goEdit">
+                                                {{row.positionLevel}}<sup>{{(row.positionLevel == 1 ? 'st' : (row.positionLevel == 2 ? 'nd' : 'rd'))}}</sup>
+                                            </div>
+                                            <div ng-show="row.goEdit">
+                                                <select style="width: 100%" ng-model="toedit.positionLevel" class="form-control" ng-options="a as a for a in [1,2,3]" />
+                                                @*<input ng-model="toedit.positionLevel" placeholder="Level" class="input-sm form-control" type="number" />*@
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="icon-gear"></i><span class="caret"></span></a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li ng-show="!row.goEdit"><a title="Edit" ng-click="editPosition(row)"><i class="icon-pencil5 text-info"></i> Edit</a></li>
+                                                    <li ng-show="!row.goEdit"><a title="Remove" ng-click="addNewPosition(row,3)"><i class="icon-trash text-danger"></i> Delete</a></li>
+                                                    <li ng-show="row.goEdit"><a title="Save" ng-click="addNewPosition(toedit,2)"><i class="icon-checkmark2 text-info"></i> Save</a></li>
+                                                    <li ng-show="row.goEdit"><a title="Cancel" ng-click="editPosition(row)"><i class="icon-cross3 text-danger"></i> Cancel</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6" class="text-center">
+                                            <div id="pagerId" st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane" id="MagnaCartas">
+                            <table st-persist="myTable2" st-table="DirectoryList" st-safe-src="Directory.magnacartas" class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="vertical-align: middle">
+                                            <input st-search placeholder="Search..." class="input-sm form-control" type="search" />
+                                        </th>
+                                        <th style="text-align: center">
+                                            <button ng-if="!addNew" style="width: 100%" type="button" ng-click="saveEdit(0,0)" class="btn bg-teal-400 btn-labeled"><b><i class="icon-reading"></i></b> Add</button>
+                                        </th>
+                                    </tr>
+                                    <tr ng-if="addNew">
+                                        <td colspan="2">
+                                            <form name="myForm2" class="col-lg-12" style="border: solid 1px; border-radius: 8px">
+                                                <div class="col-lg-10">
+                                                    <div class="col-lg-12">
+                                                        <input ng-model="addother.magnaCarta" class="input-sm form-control" placeholder="Magna Carta" st-search required maxlength="50" />
+                                                        <div style="text-align: center; font-size: .8em; padding-bottom: 5px">Magna Carta</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2" style="padding-top: 25px;">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-6">
+                                                            <button type="submit" style="width: 100%" ng-click="saveEdit(addother,1)" class="btn bg-teal-400"><span class="icon-checkmark2"></span></button>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <button type="button" style="width: 100%" ng-click="saveEdit(0,0)" class="btn btn-danger"><span class="icon-cross3"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="theader col-lg-10" st-sort="clusterName">Magna Carta</th>
+                                        <th class="theader col-lg-2"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="row in DirectoryList">
+                                        <td class="activeth">
+                                            <div ng-if="row.goEdit">
+                                                <input ng-model="toeditm.magnaCarta" class="input-sm form-control" placeholder="Magna Carta" required maxlength="50" />
+                                            </div>
+                                            <div ng-if="!row.goEdit">
+                                                {{row.magnaCarta}}
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="icon-gear"></i><span class="caret"></span></a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li ng-show="!row.goEdit"><a title="Edit" ng-click="editMC(row)"><i class="icon-pencil5 text-info"></i> Edit</a></li>
+                                                    <li ng-show="!row.goEdit"><a title="Remove" ng-click="saveEdit(row,3)"><i class="icon-trash text-danger"></i> Delete</a></li>
+                                                    <li ng-show="row.goEdit"><a title="Save" ng-click="saveEdit(toeditm,2)"><i class="icon-checkmark2 text-info"></i> Save</a></li>
+                                                    <li ng-show="row.goEdit"><a title="Cancel" ng-click="editMC(row)"><i class="icon-cross3 text-danger"></i> Cancel</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="2" class="text-center">
+                                            <div id="pagerId" st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Utility/PositionUtility.js"></script>
+@*<script src="~/Scripts/materialize.min.js"></script>*@
