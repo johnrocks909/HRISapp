@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\RSPUtility\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -159,6 +160,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HRIS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HRISOld.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRISOld.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HRISOld.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRISOld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HRISOld.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRISOld.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tappEmployee.cs">
+      <DependentUpon>HRISOld.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tOrgCluster.cs">
       <DependentUpon>HRIS.tt</DependentUpon>
@@ -362,6 +381,16 @@
     <Content Include="images\logo_icon_light.png" />
     <Content Include="images\logo_light.png" />
     <Content Include="images\signature.png" />
+    <Content Include="Models\HRISOld.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HRISOld.edmx</DependentUpon>
+      <LastGenOutput>HRISOld.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HRISOld.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HRISOld.edmx</DependentUpon>
+      <LastGenOutput>HRISOld.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\Angular\angular-animate.min.js" />
     <Content Include="Scripts\Angular\angular.js" />
     <Content Include="Scripts\Angular\angular.min.js" />
@@ -420,6 +449,13 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HRIS.edmx</DependentUpon>
       <LastGenOutput>HRIS.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\HRISOld.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HRISOld.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HRISOld.edmx.diagram">
+      <DependentUpon>HRISOld.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -912,14 +948,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\RSPUtility\3rdpartylicenses.txt" />
-    <Content Include="Scripts\RSPUtility\favicon.ico" />
-    <Content Include="Scripts\RSPUtility\index.html" />
-    <Content Include="Scripts\RSPUtility\main.js" />
-    <Content Include="Scripts\RSPUtility\polyfills.js" />
-    <Content Include="Scripts\RSPUtility\runtime.js" />
-    <Content Include="Scripts\RSPUtility\styles.js" />
-    <Content Include="Scripts\RSPUtility\vendor.js" />
     <Content Include="Scripts\Utility\OrgUtility.js" />
     <Content Include="Scripts\Utility\PositionUtility.js" />
     <Content Include="Web.config" />
@@ -938,11 +966,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Scripts\RSPUtility\main.js.map" />
-    <Content Include="Scripts\RSPUtility\polyfills.js.map" />
-    <Content Include="Scripts\RSPUtility\runtime.js.map" />
-    <Content Include="Scripts\RSPUtility\styles.js.map" />
-    <Content Include="Scripts\RSPUtility\vendor.js.map" />
     <Content Include="Views\OrgUtility\OrgDirectory.cshtml" />
     <Content Include="Views\OrgUtility\PositionDirectory.cshtml" />
     <Content Include="Views\RSPUtility\MigrateEmployeeRecords.cshtml" />

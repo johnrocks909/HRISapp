@@ -26,11 +26,6 @@ Bin/
 obj/
 Obj/
 .sln
-Global.asax
-Global.asax.cs
-HRISapp.csproj
-HRISapp.csproj.user
-Models/
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -255,5 +250,13 @@ _Pvt_Extensions
 # Idea - JetBrains
 .idea/
 
-# EMIS BackEnd application settings
+# application settings
 appsettings.json
+
+# Solution specific
+Global.asax
+Global.asax.cs
+*.csproj
+*.csproj.user
+Models/
+*.txt
