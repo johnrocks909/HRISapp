@@ -59,7 +59,6 @@ OrgUtility.controller('PosUtilityController', ['$scope', '$filter', '$http', fun
     }
 
     _s.editPosition = function (data) {
-        //console.log(data);
         data.goEdit = !data.goEdit;
         if (data.goEdit) {
             _s.toedit = angular.copy(data);

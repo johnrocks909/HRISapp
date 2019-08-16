@@ -97,10 +97,6 @@ namespace HRISapp.Controllers
                     HRIS.tOrgDepartments.FirstOrDefault(e => e.functionCode == data.functionCode).orderNo
                     :  (HRIS.tOrgDepartments.Any() ? (HRIS.tOrgDepartments.Max(e => e.orderNo) + 1) : 1);
 
-                //data.orderNo = HRIS.tOrgDepartments.Any(e => e.functionCode == data.functionCode) ?
-                //    HRIS.tOrgDepartments.FirstOrDefault(e => e.functionCode == data.functionCode).orderNo
-                //    : ((data.orderNo != null && !HRIS.tOrgDepartments.Any(e => e.orderNo == data.orderNo)) ?
-                //    data.orderNo : (HRIS.tOrgDepartments.Any() ? (HRIS.tOrgDepartments.Max(e => e.orderNo) + 1) : 1));
                 data.isActive = !HRIS.tOrgDepartments.Any(e => e.functionCode == data.functionCode);
                 HRIS.Entry(data).State = EntityState.Added;
             }
@@ -173,10 +169,10 @@ namespace HRISapp.Controllers
             if (data.clusterCode == null)
             {
                 Random rnd = new Random();
-                var series = rnd.Next(1, 999);
+                var suffix = rnd.Next(1, 999);
                 do
                 {
-                    data.clusterCode = "CC" + DateTime.Now.ToString("yyMMddHHmmssfff") + (series.ToString("D3"));
+                    data.clusterCode = "CC" + DateTime.Now.ToString("yyMMddHHmmssfff") + (suffix.ToString("D3"));
                 }
                 while (HRIS.tOrgClusters.Any(e => e.clusterCode == data.clusterCode));
                
@@ -199,10 +195,10 @@ namespace HRISapp.Controllers
             if (data.divisionCode == null)
             {
                 Random rnd = new Random();
-                var series = rnd.Next(1, 999);
+                var suffix = rnd.Next(1, 999);
                 do
                 {
-                    data.divisionCode = "DC" + DateTime.Now.ToString("yyMMddHHmmssfff") + (series.ToString("D3"));
+                    data.divisionCode = "DC" + DateTime.Now.ToString("yyMMddHHmmssfff") + (suffix.ToString("D3"));
                 }
                 while (HRIS.tOrgDivisions.Any(e => e.divisionCode == data.divisionCode));
 
@@ -224,10 +220,10 @@ namespace HRISapp.Controllers
             if (data.sectionCode == null)
             {
                 Random rnd = new Random();
-                var series = rnd.Next(1, 999);
+                var suffix = rnd.Next(1, 999);
                 do
                 {
-                    data.sectionCode = "SC" + DateTime.Now.ToString("yyMMddHHmmssfff") + (series.ToString("D3"));
+                    data.sectionCode = "SC" + DateTime.Now.ToString("yyMMddHHmmssfff") + (suffix.ToString("D3"));
                 }
                 while (HRIS.tOrgSections.Any(e => e.sectionCode == data.sectionCode));
 
@@ -249,10 +245,10 @@ namespace HRISapp.Controllers
             if (data.unitCode == null)
             {
                 Random rnd = new Random();
-                var series = rnd.Next(1, 999);
+                var suffix = rnd.Next(1, 999);
                 do
                 {
-                    data.unitCode = "UC" + DateTime.Now.ToString("yyMMddHHmmssfff") + (series.ToString("D3"));
+                    data.unitCode = "UC" + DateTime.Now.ToString("yyMMddHHmmssfff") + (suffix.ToString("D3"));
                 }
                 while (HRIS.tOrgUnits.Any(e => e.unitCode == data.unitCode));
 
@@ -290,10 +286,10 @@ namespace HRISapp.Controllers
 
             if (data.positionCode == null) {
                 Random rnd = new Random();
-                var series = rnd.Next(1, 999);
+                var suffix = rnd.Next(1, 999);
                 do
                 {
-                    data.positionCode = "PC" + DateTime.Now.ToString("yyMMddHHmmssfff") + (series.ToString("D3"));
+                    data.positionCode = "PC" + DateTime.Now.ToString("yyMMddHHmmssfff") + (suffix.ToString("D3"));
                 }
                 while (HRIS.tRSPPositions.Any(e => e.positionCode == data.positionCode));
 
