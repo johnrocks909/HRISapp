@@ -1,1 +1,44 @@
-<p>home works!</p>
+<h1>Migration of Employee Profile</h1>
+
+<select name="type" id="type" (change)="selectedType($event.target.value)" class="form-controll">
+    <option value="">Select Employee Profile</option>
+    <option value="{{ item.EIC }}" *ngFor="let item of Employees">{{ item.lastName }}, {{ item.firstName }}</option>
+</select>
+
+<ul id="prutas" *ngIf="SelectedType == 'fruit'">
+    <li>Banana</li>
+    <li>Apple</li>
+    <li>Grapes</li>
+</ul>
+
+<ul id="gulay" *ngIf="SelectedType == 'vegetable'">
+    <li>Tinangkong</li>
+    <li>Kalabasa</li>
+    <li>Batong</li>
+</ul>
+
+
+<div class="form-group">
+    <label>Live search support</label>
+    <select class="bootstrap-select" data-live-search="true" data-width="100%">
+        <optgroup label="Alaskan/Hawaiian Time Zone">
+            <option value="AK">Alaska</option>
+            <option value="HI">Hawaii</option>
+        </optgroup>
+        <optgroup label="Pacific Time Zone">
+            <option value="CA">California</option>
+            <option value="OR">Oregon</option>
+            <option value="WA">Washington</option>
+        </optgroup>
+        <optgroup label="Mountain Time Zone">
+            <option value="AZ">Arizona</option>
+            <option value="CO">Colorado</option>
+            <option value="ID">Idaho</option>
+        </optgroup>
+        <optgroup label="Central Time Zone">
+            <option value="AL">Alabama</option>
+            <option value="AR">Arkansas</option>
+            <option value="IA">Iowa</option>
+        </optgroup>
+    </select>
+</div>
