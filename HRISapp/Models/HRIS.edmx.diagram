@@ -4,7 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dccd002b1d3a45608c0eb84f1c06d5bc" Name="Diagram1">
+      <Diagram DiagramId="1f8def9fcba54bc0bd64cc31d20f1fb2" Name="Diagram1">
+        <EntityTypeShape EntityType="HRISDBModel.sysdiagram" Width="1.5" PointX="9.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HRISDBModel.tOrgCluster" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="HRISDBModel.tOrgDepartment" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HRISDBModel.tOrgDivision" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />

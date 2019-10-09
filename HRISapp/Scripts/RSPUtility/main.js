@@ -11,17 +11,6 @@ module.exports = "<router-outlet></router-outlet>  "
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/components/cash-in/cash-in.component.html":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/components/cash-in/cash-in.component.html ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>cash-in works!</p>\n"
-
-/***/ }),
-
 /***/ "./node_modules/raw-loader/index.js!./src/app/components/home/home.component.html":
 /*!*******************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/components/home/home.component.html ***!
@@ -29,18 +18,7 @@ module.exports = "<p>cash-in works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Migration of Employee Profile</h1>\n\n<select name=\"type\" id=\"type\" (change)=\"selectedType($event.target.value)\" class=\"form-controll\">\n    <option value=\"\">Select Employee Profile</option>\n    <option value=\"{{ item.EIC }}\" *ngFor=\"let item of Employees\">{{ item.lastName }}, {{ item.firstName }}</option>\n</select>\n\n<ul id=\"prutas\" *ngIf=\"SelectedType == 'fruit'\">\n    <li>Banana</li>\n    <li>Apple</li>\n    <li>Grapes</li>\n</ul>\n\n<ul id=\"gulay\" *ngIf=\"SelectedType == 'vegetable'\">\n    <li>Tinangkong</li>\n    <li>Kalabasa</li>\n    <li>Batong</li>\n</ul>\n\n\n<div class=\"form-group\">\n    <label>Live search support</label>\n    <select class=\"bootstrap-select\" data-live-search=\"true\" data-width=\"100%\">\n        <optgroup label=\"Alaskan/Hawaiian Time Zone\">\n            <option value=\"AK\">Alaska</option>\n            <option value=\"HI\">Hawaii</option>\n        </optgroup>\n        <optgroup label=\"Pacific Time Zone\">\n            <option value=\"CA\">California</option>\n            <option value=\"OR\">Oregon</option>\n            <option value=\"WA\">Washington</option>\n        </optgroup>\n        <optgroup label=\"Mountain Time Zone\">\n            <option value=\"AZ\">Arizona</option>\n            <option value=\"CO\">Colorado</option>\n            <option value=\"ID\">Idaho</option>\n        </optgroup>\n        <optgroup label=\"Central Time Zone\">\n            <option value=\"AL\">Alabama</option>\n            <option value=\"AR\">Arkansas</option>\n            <option value=\"IA\">Iowa</option>\n        </optgroup>\n    </select>\n</div>"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/components/trylang/trylang.component.html":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/components/trylang/trylang.component.html ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>trylang works!</p>\n"
+module.exports = "<h1>Migration of Employee Profile</h1>\n\n<div class=\"row\">\n    <div class=\"col col-lg-3 col-md-3 col-sm-6\">\n        <div class=\"input-group\">\n            <select2 [data]=\"employeeData\" (valueChanged)=\"selectedEmployee2($event)\"></select2>\n            <!-- <select name=\"oldEmp\" id=\"oldEmp\" (change)=\"selectedEmployee($event.target.value)\" class=\"form-control\">\n                <option value=\"\">Select Employee Profile</option>\n                <option value=\"{{ item.EIC }}\" *ngFor=\"let item of Employees\">{{ item.lastName }}, {{ item.firstName }}\n                </option>\n            </select> -->\n            <div class=\"input-group-btn\" *ngIf=\"selectedEmployeeEIC\">\n                <button [swal]=\"{\n                        title: 'CONFIRMATION',\n                        text: 'Continue to migrate employee record?',\n                        type: 'question',\n                        showCancelButton: true,\n                        confirmButtonText: 'Yes, migrate it!'\n                    }\" \n                    (confirm)=\"MigrateEmployee()\"\n                    (cancel)=\"FetchOldEmployees()\"\n                    class=\"btn btn-primary\">Submit</button>\n            </div>\n        </div>\n    </div>\n</div>\n<!-- <hr>\n<div *ngIf=\"EmployeeProfile\">\n    <div class=\"row\">\n        <div class=\"col col-lg-3\"><h4>Newly Migrated Employee Profile!</h4></div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col col-lg-1\"><b>Id No.:</b></div>\n        <div class=\"col col-lg-2\">{{ EmployeeProfile.idNo }}</div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col col-lg-1\"><b>Lastname:</b></div>\n        <div class=\"col col-lg-2\">{{ EmployeeProfile.lastName }}</div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col col-lg-1\"><b>Firstname:</b></div>\n        <div class=\"col col-lg-2\">{{ EmployeeProfile.firstName }}</div>\n    </div>\n</div> -->\n\n<swal\n    #SwalMigratedProfile\n    title=\"New Profile Migrated\"\n    text=\"Id No\"\n    type=\"info\"\n    >\n    <div *swalPartial class=\"row\">\n        <div class=\"col\">{{ EmployeeProfile.idNo }}  {{ EmployeeProfile.lastName }}, {{ EmployeeProfile.firstName }} {{ EmployeeProfile.extName }}</div>\n    </div>\n</swal>"
 
 /***/ }),
 
@@ -80,8 +58,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
-/* harmony import */ var _components_trylang_trylang_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/trylang/trylang.component */ "./src/app/components/trylang/trylang.component.ts");
-/* harmony import */ var _components_cash_in_cash_in_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/cash-in/cash-in.component */ "./src/app/components/cash-in/cash-in.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -91,13 +67,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
-
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"], pathMatch: 'full' },
-    { path: 'try', component: _components_trylang_trylang_component__WEBPACK_IMPORTED_MODULE_3__["TrylangComponent"], pathMatch: 'full' },
-    { path: 'ci', component: _components_cash_in_cash_in_component__WEBPACK_IMPORTED_MODULE_4__["CashInComponent"], pathMatch: 'full' }
+    { path: 'home', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"], pathMatch: 'full' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -182,17 +154,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! .//app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
-/* harmony import */ var _components_trylang_trylang_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/trylang/trylang.component */ "./src/app/components/trylang/trylang.component.ts");
-/* harmony import */ var _components_cash_in_cash_in_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/cash-in/cash-in.component */ "./src/app/components/cash-in/cash-in.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @sweetalert2/ngx-sweetalert2 */ "./node_modules/@sweetalert2/ngx-sweetalert2/fesm5/sweetalert2-ngx-sweetalert2.js");
+/* harmony import */ var ng2_select2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ng2-select2 */ "./node_modules/ng2-select2/ng2-select2.js");
+/* harmony import */ var ng2_select2__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(ng2_select2__WEBPACK_IMPORTED_MODULE_8__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -210,74 +181,26 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
                 _components_home_home_component__WEBPACK_IMPORTED_MODULE_5__["HomeComponent"],
-                _components_trylang_trylang_component__WEBPACK_IMPORTED_MODULE_6__["TrylangComponent"],
-                _components_cash_in_cash_in_component__WEBPACK_IMPORTED_MODULE_7__["CashInComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"]
+                _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_7__["SweetAlert2Module"].forRoot({
+                    buttonsStyling: false,
+                    customClass: 'modal-content',
+                    confirmButtonClass: 'btn btn-primary',
+                    cancelButtonClass: 'btn'
+                }),
+                ng2_select2__WEBPACK_IMPORTED_MODULE_8__["Select2Module"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/components/cash-in/cash-in.component.css":
-/*!**********************************************************!*\
-  !*** ./src/app/components/cash-in/cash-in.component.css ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY2FzaC1pbi9jYXNoLWluLmNvbXBvbmVudC5jc3MifQ== */"
-
-/***/ }),
-
-/***/ "./src/app/components/cash-in/cash-in.component.ts":
-/*!*********************************************************!*\
-  !*** ./src/app/components/cash-in/cash-in.component.ts ***!
-  \*********************************************************/
-/*! exports provided: CashInComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CashInComponent", function() { return CashInComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var CashInComponent = /** @class */ (function () {
-    function CashInComponent() {
-    }
-    CashInComponent.prototype.ngOnInit = function () {
-    };
-    CashInComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-cash-in',
-            template: __webpack_require__(/*! raw-loader!./cash-in.component.html */ "./node_modules/raw-loader/index.js!./src/app/components/cash-in/cash-in.component.html"),
-            styles: [__webpack_require__(/*! ./cash-in.component.css */ "./src/app/components/cash-in/cash-in.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], CashInComponent);
-    return CashInComponent;
 }());
 
 
@@ -291,7 +214,7 @@ var CashInComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "h1 {\r\n    color: red;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9ob21lL2hvbWUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFVBQVU7QUFDZCIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJoMSB7XHJcbiAgICBjb2xvcjogcmVkO1xyXG59Il19 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -306,9 +229,9 @@ module.exports = "h1 {\r\n    color: red;\r\n}\r\n/*# sourceMappingURL=data:appl
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sweetalert2/ngx-sweetalert2 */ "./node_modules/@sweetalert2/ngx-sweetalert2/fesm5/sweetalert2-ngx-sweetalert2.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -323,20 +246,29 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(router, http) {
-        this.router = router;
+    function HomeComponent(http, swal) {
         this.http = http;
-        this.myControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"];
+        this.swal = swal;
+        this.myControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"];
         this.options = ['One', 'Two', 'Three'];
     }
     HomeComponent.prototype.ngOnInit = function () {
-        // this.FetchOldEmployees();
-        // console.log(this.source);
+        this.FetchOldEmployees();
+    };
+    /**
+     * MigrateEmployee
+     */
+    HomeComponent.prototype.MigrateEmployee = function () {
         var _this = this;
-        // this.router.navigate(["ci"]);
-        var url = "/RSPUtility/OldEmployees";
-        this.http.get(url).toPromise().then(function (employees) {
-            _this.Employees = employees;
+        var url = "/RSPUtility/PostEmployee";
+        var body = {
+            "EIC": this.selectedEmployeeEIC
+        };
+        this.http.post(url, body).toPromise().then(function (employee) {
+            _this.EmployeeProfile = employee;
+            console.log(_this.EmployeeProfile);
+            _this.SwalMigratedProfile.show();
+            _this.FetchOldEmployees();
         }, function (reason) {
             console.log(reason.error);
         });
@@ -344,242 +276,44 @@ var HomeComponent = /** @class */ (function () {
     /**
      * selectedType
      */
-    HomeComponent.prototype.selectedType = function (paramValue) {
-        this.SelectedType = paramValue;
+    HomeComponent.prototype.selectedEmployee = function (paramValue) {
+        this.selectedEmployeeEIC = paramValue;
+    };
+    HomeComponent.prototype.selectedEmployee2 = function (data) {
+        console.log(data);
+        this.selectedEmployeeEIC = data.value;
     };
     /**
      * FetchOldEmployees
      */
     HomeComponent.prototype.FetchOldEmployees = function () {
-        this.source = [
-            {
-                "key": 1,
-                "station": "Antonito",
-                "state": "CO"
-            },
-            {
-                "key": 2,
-                "station": "Big Horn",
-                "state": "NM"
-            },
-            {
-                "key": 3,
-                "station": "Sublette",
-                "state": "NM"
-            },
-            {
-                "key": 4,
-                "station": "Toltec",
-                "state": "NM"
-            },
-            {
-                "key": 5,
-                "station": "Osier",
-                "state": "CO"
-            },
-            {
-                "key": 6,
-                "station": "Chama",
-                "state": "NM"
-            },
-            {
-                "key": 7,
-                "station": "Monero",
-                "state": "NM"
-            },
-            {
-                "key": 8,
-                "station": "Lumberton",
-                "state": "NM"
-            },
-            {
-                "key": 9,
-                "station": "Duice",
-                "state": "NM"
-            },
-            {
-                "key": 10,
-                "station": "Navajo",
-                "state": "NM"
-            },
-            {
-                "key": 11,
-                "station": "Juanita",
-                "state": "CO"
-            },
-            {
-                "key": 12,
-                "station": "Pagosa Jct",
-                "state": "CO"
-            },
-            {
-                "key": 13,
-                "station": "Carracha",
-                "state": "CO"
-            },
-            {
-                "key": 14,
-                "station": "Arboles",
-                "state": "CO"
-            },
-            {
-                "key": 15,
-                "station": "Solidad",
-                "state": "CO"
-            },
-            {
-                "key": 16,
-                "station": "Tiffany",
-                "state": "CO"
-            },
-            {
-                "key": 17,
-                "station": "La Boca",
-                "state": "CO"
-            },
-            {
-                "key": 18,
-                "station": "Ignacio",
-                "state": "CO"
-            },
-            {
-                "key": 19,
-                "station": "Oxford",
-                "state": "CO"
-            },
-            {
-                "key": 20,
-                "station": "Florida",
-                "state": "CO"
-            },
-            {
-                "key": 21,
-                "station": "Bocea",
-                "state": "CO"
-            },
-            {
-                "key": 22,
-                "station": "Carbon Jct",
-                "state": "CO"
-            },
-            {
-                "key": 23,
-                "station": "Durango",
-                "state": "CO"
-            },
-            {
-                "key": 24,
-                "station": "Home Ranch",
-                "state": "CO"
-            },
-            {
-                "key": 25,
-                "station": "Trimble Springs",
-                "state": "CO"
-            },
-            {
-                "key": 26,
-                "station": "Hermosa",
-                "state": "CO"
-            },
-            {
-                "key": 27,
-                "station": "Rockwood",
-                "state": "CO"
-            },
-            {
-                "key": 28,
-                "station": "Tacoma",
-                "state": "CO"
-            },
-            {
-                "key": 29,
-                "station": "Needleton",
-                "state": "CO"
-            },
-            {
-                "key": 30,
-                "station": "Elk Park",
-                "state": "CO"
-            },
-            {
-                "key": 31,
-                "station": "Silverton",
-                "state": "CO"
-            },
-            {
-                "key": 32,
-                "station": "Eureka",
-                "state": "CO"
-            }
-        ];
+        var _this = this;
+        var url = "/RSPUtility/OldEmployees";
+        this.http.get(url).toPromise().then(function (employees) {
+            _this.Employees = employees;
+            _this.employeeData = _this.Employees;
+        }, function (reason) {
+            console.log(reason.error);
+        });
     };
     HomeComponent.ctorParameters = function () { return [
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] },
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] },
+        { type: _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_3__["SwalPartialTargets"] }
     ]; };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])("SwalMigratedProfile", { static: false }),
+        __metadata("design:type", _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_3__["SwalComponent"])
+    ], HomeComponent.prototype, "SwalMigratedProfile", void 0);
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-home',
             template: __webpack_require__(/*! raw-loader!./home.component.html */ "./node_modules/raw-loader/index.js!./src/app/components/home/home.component.html"),
             styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/components/home/home.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
+            _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_3__["SwalPartialTargets"]])
     ], HomeComponent);
     return HomeComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/components/trylang/trylang.component.css":
-/*!**********************************************************!*\
-  !*** ./src/app/components/trylang/trylang.component.css ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdHJ5bGFuZy90cnlsYW5nLmNvbXBvbmVudC5jc3MifQ== */"
-
-/***/ }),
-
-/***/ "./src/app/components/trylang/trylang.component.ts":
-/*!*********************************************************!*\
-  !*** ./src/app/components/trylang/trylang.component.ts ***!
-  \*********************************************************/
-/*! exports provided: TrylangComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrylangComponent", function() { return TrylangComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var TrylangComponent = /** @class */ (function () {
-    function TrylangComponent() {
-    }
-    TrylangComponent.prototype.ngOnInit = function () {
-    };
-    TrylangComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-trylang',
-            template: __webpack_require__(/*! raw-loader!./trylang.component.html */ "./node_modules/raw-loader/index.js!./src/app/components/trylang/trylang.component.html"),
-            styles: [__webpack_require__(/*! ./trylang.component.css */ "./src/app/components/trylang/trylang.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], TrylangComponent);
-    return TrylangComponent;
 }());
 
 

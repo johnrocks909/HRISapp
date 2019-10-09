@@ -25,6 +25,7 @@ namespace HRISapp.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<tOrgCluster> tOrgClusters { get; set; }
         public DbSet<tOrgDepartment> tOrgDepartments { get; set; }
         public DbSet<tOrgDivision> tOrgDivisions { get; set; }

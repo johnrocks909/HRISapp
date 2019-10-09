@@ -139,6 +139,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\API\OrgStructuresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrgUtilityController.cs" />
     <Compile Include="Controllers\RSPUtilityController.cs" />
@@ -175,6 +176,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HRISOld.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>HRIS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tappEmployee.cs">
       <DependentUpon>HRISOld.tt</DependentUpon>
@@ -381,6 +385,16 @@
     <Content Include="images\logo_icon_light.png" />
     <Content Include="images\logo_light.png" />
     <Content Include="images\signature.png" />
+    <Content Include="Models\HRIS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HRIS.edmx</DependentUpon>
+      <LastGenOutput>HRIS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HRIS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HRIS.edmx</DependentUpon>
+      <LastGenOutput>HRIS.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\HRISOld.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HRISOld.edmx</DependentUpon>
@@ -433,29 +447,19 @@
     <Content Include="Content\css\icons\summernote\summernotef534.woff" />
     <Content Include="Scripts\Angular\angular.min.js.gzip" />
     <Content Include="Scripts\Angular\angular.min.js.map" />
-    <EntityDeploy Include="Models\HRIS.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HRIS.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\HRIS.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HRIS.edmx</DependentUpon>
-      <LastGenOutput>HRIS.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\HRIS.edmx.diagram">
-      <DependentUpon>HRIS.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\HRIS.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HRIS.edmx</DependentUpon>
-      <LastGenOutput>HRIS.cs</LastGenOutput>
-    </Content>
     <EntityDeploy Include="Models\HRISOld.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HRISOld.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\HRISOld.edmx.diagram">
       <DependentUpon>HRISOld.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\HRIS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HRIS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HRIS.edmx.diagram">
+      <DependentUpon>HRIS.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -950,7 +954,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Utility\OrgUtility.js" />
     <Content Include="Scripts\Utility\PositionUtility.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

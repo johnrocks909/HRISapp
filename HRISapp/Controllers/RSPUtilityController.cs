@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -23,14 +24,29 @@ namespace HRISapp.Controllers
          * PostEmployee
          * - save employee record to new database
          */
-        public ActionResult PostEmployee(tRSPEmployee employee)
+        [HttpPost]
+        public ActionResult PostEmployee(string EIC)
         {
             try
             {
+                var oldEmpData = _dbOLD.tappEmployees.SingleOrDefault(e => e.EIC == EIC);
+                if (oldEmpData == null) return new HttpStatusCodeResult(HttpStatusCode.ExpectationFailed, "Sorry, employee not found.");
+
+                var employee = new tRSPEmployee();
+                employee.EIC = oldEmpData.EIC;
+                employee.idNo = oldEmpData.idNo;
+                employee.lastName = oldEmpData.lastName;
+                employee.firstName = oldEmpData.firstName;
+                employee.middleName = oldEmpData.middleName;
+                employee.extName = oldEmpData.extName;
+                employee.birthDate = oldEmpData.birthdate;
+                employee.birthPlace = oldEmpData.birthplace;
+
                 _dbNew.tRSPEmployees.Add(employee);
                 int retval = _dbNew.SaveChanges();
-                if (retval == 0) return new HttpStatusCodeResult(HttpStatusCode.ExpectationFailed, "Sorry, something wrong happen.");
-                return new HttpStatusCodeResult(HttpStatusCode.Created, "New employee is recorded.");
+                if (retval == 0) return new HttpStatusCodeResult(HttpStatusCode.ExpectationFailed, "Sorry, something wrong happen. Saving employee data failed.");
+
+                return Json(employee, JsonRequestBehavior.DenyGet);
             }
             catch (Exception e)
             {
@@ -50,16 +66,11 @@ namespace HRISapp.Controllers
                 var migratedEmployees = _dbNew.tRSPEmployees.Select(t => t.EIC).ToList();
                 var unmigratedEmployees = _dbOLD.tappEmployees.ToList();
                 var filteredUnmigratedEmployees = unmigratedEmployees.Where(u => !migratedEmployees.Contains(u.EIC))
+                                                    .OrderBy(u => u.lastName).ThenBy(u => u.firstName)
                                                     .Select(e => new
                                                     {
-                                                        e.EIC,
-                                                        e.idNo,
-                                                        e.lastName,
-                                                        e.firstName,
-                                                        e.middleName,
-                                                        e.extName,
-                                                        e.birthdate,
-                                                        e.birthplace
+                                                        id = e.EIC,
+                                                        text = e.lastName + ", " + e.firstName + " " + e.extName
                                                     });
 
                 if (!filteredUnmigratedEmployees.Any()) return null;
@@ -72,6 +83,32 @@ namespace HRISapp.Controllers
                 //throw;
             }
         }
+
+        //public ActionResult OrgStruct()
+        //{
+        //    try
+        //    {
+        //        _dbNew.Configuration.ProxyCreationEnabled = false;
+        //        var l = _dbNew.tOrgStructures
+        //            .Include(x => x.tOrgDepartment)
+        //            .Select(x => new
+        //            {
+        //                x,
+        //                x.tOrgDepartment.departmentName,
+        //                plantillaCode = x.tRSPPlantillas.Select(r => r.plantillaCode)
+        //            })
+        //            .ToList();
+
+        //        if (!l.Any()) return null;
+
+        //        return Json(l.ToList(), JsonRequestBehavior.AllowGet);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        //return new HttpStatusCodeResult(HttpStatusCode.BadRequest, e.Message);
+        //        throw;
+        //    }
+        //}
 
     }
 }

@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HRISDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HRISDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="tOrgCluster">
           <Key>
             <PropertyRef Name="clusterCode" />
@@ -74,6 +84,8 @@
           <Property Name="extName" Type="varchar" MaxLength="4" />
           <Property Name="birthDate" Type="date" />
           <Property Name="birthPlace" Type="varchar" MaxLength="50" />
+          <Property Name="dateOrigAppointment" Type="date" />
+          <Property Name="dateLastPromoted" Type="date" />
         </EntityType>
         <EntityType Name="tRSPEmploymentStatus">
           <Key>
@@ -168,7 +180,7 @@
           <Property Name="salary" Type="varchar" MaxLength="20" />
           <Property Name="placeOfAssignment" Type="varchar" MaxLength="30" />
           <Property Name="branch" Type="varchar" MaxLength="20" />
-          <Property Name="LWOP" Type="varchar" MaxLength="20" />
+          <Property Name="LWOP" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="separationCause" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tRSPServiceRecordRemark">
@@ -360,6 +372,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="HRISDBModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tOrgCluster" EntityType="Self.tOrgCluster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tOrgDepartment" EntityType="Self.tOrgDepartment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tOrgDivision" EntityType="Self.tOrgDivision" Schema="dbo" store:Type="Tables" />
@@ -438,11 +451,20 @@
             <End Role="tRSPServiceRecordRemark" EntitySet="tRSPServiceRecordRemark" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="HRISDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="HRISDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="tOrgCluster">
           <Key>
             <PropertyRef Name="clusterCode" />
@@ -526,6 +548,8 @@
           <NavigationProperty Name="tRSPPlantillaPersonnels" Relationship="Self.FK_tRSPPlantillaPersonnel_tRSPEmployee" FromRole="tRSPEmployee" ToRole="tRSPPlantillaPersonnel" />
           <NavigationProperty Name="tRSPServiceRecords" Relationship="Self.FK_tRSPServiceRecord_tRSPEmployee" FromRole="tRSPEmployee" ToRole="tRSPServiceRecord" />
           <NavigationProperty Name="tRSPServiceRecordRemarks" Relationship="Self.FK_tRSPServiceRecordRemark_tRSPEmployee" FromRole="tRSPEmployee" ToRole="tRSPServiceRecordRemark" />
+          <Property Name="dateOrigAppointment" Type="DateTime" Precision="0" />
+          <Property Name="dateLastPromoted" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="tRSPEmploymentStatu">
           <Key>
@@ -634,7 +658,7 @@
           <Property Name="salary" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="placeOfAssignment" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="branch" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="LWOP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LWOP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="separationCause" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tRSPEmployee" Relationship="Self.FK_tRSPServiceRecord_tRSPEmployee" FromRole="tRSPServiceRecord" ToRole="tRSPEmployee" />
         </EntityType>
@@ -828,6 +852,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="HRISDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tOrgClusters" EntityType="Self.tOrgCluster" />
           <EntitySet Name="tOrgDepartments" EntityType="Self.tOrgDepartment" />
           <EntitySet Name="tOrgDivisions" EntityType="Self.tOrgDivision" />
@@ -912,6 +937,17 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="HRISDBModelStoreContainer" CdmEntityContainer="HRISDBEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HRISDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tOrgClusters">
             <EntityTypeMapping TypeName="HRISDBModel.tOrgCluster">
               <MappingFragment StoreEntitySet="tOrgCluster">
@@ -977,6 +1013,8 @@
           <EntitySetMapping Name="tRSPEmployees">
             <EntityTypeMapping TypeName="HRISDBModel.tRSPEmployee">
               <MappingFragment StoreEntitySet="tRSPEmployee">
+                <ScalarProperty Name="dateLastPromoted" ColumnName="dateLastPromoted" />
+                <ScalarProperty Name="dateOrigAppointment" ColumnName="dateOrigAppointment" />
                 <ScalarProperty Name="recNo" ColumnName="recNo" />
                 <ScalarProperty Name="EIC" ColumnName="EIC" />
                 <ScalarProperty Name="idNo" ColumnName="idNo" />

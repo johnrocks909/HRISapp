@@ -14,10 +14,10 @@ namespace HRISapp.Models
     
     public partial class tOrgDepartment
     {
-        public tOrgDepartment()
-        {
-            this.tOrgStructures = new HashSet<tOrgStructure>();
-        }
+        //public tOrgDepartment()
+        //{
+        //    this.tOrgStructures = new HashSet<tOrgStructure>();
+        //}
     
         public int recNo { get; set; }
         public string departmentCode { get; set; }

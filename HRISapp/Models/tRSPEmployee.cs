@@ -30,6 +30,8 @@ namespace HRISapp.Models
         public string extName { get; set; }
         public Nullable<System.DateTime> birthDate { get; set; }
         public string birthPlace { get; set; }
+        public Nullable<System.DateTime> dateOrigAppointment { get; set; }
+        public Nullable<System.DateTime> dateLastPromoted { get; set; }
     
         public virtual ICollection<tRSPPlantillaPersonnel> tRSPPlantillaPersonnels { get; set; }
         public virtual ICollection<tRSPServiceRecord> tRSPServiceRecords { get; set; }

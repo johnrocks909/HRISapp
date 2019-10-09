@@ -5,18 +5,15 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './components/home/home.component';
-import { TrylangComponent } from './components/trylang/trylang.component';
-import { CashInComponent } from './components/cash-in/cash-in.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
+import { Select2Module } from "ng2-select2";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TrylangComponent,
-    CashInComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +21,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    SweetAlert2Module.forRoot({
+      buttonsStyling: false,
+      customClass: 'modal-content',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn'
+    }),
+    Select2Module
   ],
   providers: [],
   bootstrap: [AppComponent]
